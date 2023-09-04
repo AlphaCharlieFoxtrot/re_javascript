@@ -1,0 +1,146 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    header{
+        background-color: lightcoral;
+        color: whitesmoke;
+        font-weight: bold;
+        width: 100%;
+        padding: 0 0 10px 10px;
+    }
+    main{
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: lightcoral;
+        padding: 35px 25px 35px 25px;
+        border-radius: 25px;
+        color: whitesmoke;
+        font-weight: bolder;
+        gap: 10px;
+        .zoneOptions p{
+            font-size: 1.1em;
+        }
+        div.zoneOptions{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            .optionSource{
+                display: flex;
+                width: 50%;
+                flex-direction: row;
+                justify-content: space-around;
+            }
+        }
+        .zoneSaisie{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 5%;
+            input{
+                width: 40%;
+            }
+        }
+    }
+    .popupBackground{
+        display: none;
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
+        background-color: rgba(255, 255, 255, 0.5);
+        .popup{
+            /*width: 100%;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;*/
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            width: 300px;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            font-size: 17px;
+            font-weight: 500;
+            background-color: #f76c5e;
+            border-radius: 30px;
+            z-index: 1;
+            div{
+                font-size: 1.4em;
+            }
+            form{
+                display: flex;
+                flex-direction: column;
+                align-items: baseline;
+                gap: 10px;
+                label{
+                    font-size: 1.1em;
+                }
+                input{
+                    width: 70%;
+                }
+                /*#btnEnvoyerMail{
+                    align-self: center;
+                }*/
+            }
+        }
+    }
+    .active{
+        display: flex;
+    }
+
+    input{
+        border: none;
+        background-color: white;
+        font-weight: bold;
+        font-size: 1em;
+        padding: 5px;
+    }
+    button{
+        border: none;
+        background-color:lightgray;
+        color: white;
+        font-weight: bold;
+        font-size: 1em;
+        padding: 8px;
+        width: 110px;
+        margin: 2px;
+        border-radius: 25px;
+    }
+    @media screen and (max-width: 1200px) {
+        main {
+            width: 60%;
+            padding: 30px;
+        }
+    }
+    
+    
+    /* En dessous de 800 px */
+    @media screen and (max-width: 800px) {
+        main {
+            width: 90%;
+            padding: 10px;
+        }
+    }
+}
