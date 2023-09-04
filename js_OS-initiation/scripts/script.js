@@ -13,6 +13,11 @@ function afficherProposition(Proposition){
     zoneProposition.innerText = Proposition
 }
 
+function afficherEmail(nom, email, score) {
+    let mailto = `mailto:${email}?subject=Partage du score Azertype&body=Salut, je suis ${nom} et je viens de réaliser le score ${score} sur le site d'Azertype !`
+    location.href = mailto
+}
+
 function lancerJeux() {
     //initialisation
     let score = 0
@@ -60,6 +65,26 @@ function lancerJeux() {
     }
 
     afficherResultat(score, i)
+
+    const form = document.querySelector("form")
+
+    form.addEventListener("submit", (event) => {
+        event.preventDefault()
+        console.log("Pas de rechargement de page")
+
+        let baliseNom = document.getElementById("nom")
+        let nom = baliseNom.value
+
+        let baliseEmail = document.getElementById("email")
+        let email = baliseEmail.value
+
+        let scoreEmail = `${score} / ${i}`
+
+        //console.log(nom, email)
+        afficherEmail(nom, email, scoreEmail)
+
+        let message = ""
+    })
 }
 
 /*function choisirPhrasesOuMots () {

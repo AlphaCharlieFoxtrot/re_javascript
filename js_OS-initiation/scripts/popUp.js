@@ -14,13 +14,13 @@ function cacherPopUp() {
 
 function initAddEventListenerPopup() {
     let btnPartage = document.querySelector(".zonePartage button")
-    let popUpBackground =document.querySelector(".popUpBackground")
+    let popupBackground =document.querySelector(".popupBackground")
     btnPartage.addEventListener("click", () => {
         afficherPopUp()
     })
 
-    popUpBackground.addEventListener("click", (event) => {
-        if(event.target === popUpBackground){
+    popupBackground.addEventListener("click", (event) => {
+        if(event.target === popupBackground){
             cacherPopUp()
         }
     })
