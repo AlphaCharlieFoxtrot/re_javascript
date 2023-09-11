@@ -57,7 +57,7 @@ body main .zoneSaisie {
   gap: 5%;
 }
 body main .zoneSaisie input {
-  width: 40%;
+  width: 50%;
 }
 body .popupBackground {
   display: none;
@@ -85,7 +85,7 @@ body .popupBackground .popup {
   text-align: center;
   color: white;
   font-size: 17px;
-  font-weight: 500;
+  font-weight: bold;
   background-color: #f76c5e;
   border-radius: 30px;
   z-index: 1;
