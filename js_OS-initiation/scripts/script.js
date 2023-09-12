@@ -14,19 +14,17 @@ function afficherProposition(Proposition){
 }
 
 function validerNom(nom){
-    if(nom.length > 2){
-        return true
+    if(nom.length < 2){
+        throw new Error("Le nom est trop court.")
     }
-    return false
 }
 
 function validerEmail(email){
     let regex = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9._-]+")
     //si expression régulière,premiere condition semble etre le cas "true" par dflt.
-    if(regex.test(email)){
-        return true
+    if(!regex.test(email)){
+        throw new Error("L'email n'est pas valide.")
     }
-    return false
 
     //return resultat
 }
@@ -34,6 +32,37 @@ function validerEmail(email){
 function afficherEmail(nom, email, score) {
     let mailto = `mailto:${email}?subject=Partage du score Azertype&body=Salut, je suis ${nom} et je viens de réaliser le score ${score} sur le site d'Azertype !`
     location.href = mailto
+}
+
+function afficherMessageErreur(message){
+
+    let spanErreurMessage = document.getElementById("erreurMessage")
+
+    if(!spanErreurMessage){
+        let popUp = document.querySelector(".popup")
+        spanErreurMessage = document.createElement("span")
+        spanErreurMessage.id = "erreurMessage"
+        popUp.append(spanErreurMessage)
+    }
+
+    spanErreurMessage.innerText = message
+}
+
+function gererFormulaire(scoreEmail){
+    try{
+        let baliseNom = document.getElementById("nom")
+        let nom = baliseNom.value
+        validerNom(nom)
+        
+        let baliseEmail = document.getElementById("email")
+        let email = baliseEmail.value
+        validerEmail(email)
+        afficherMessageErreur("")
+        afficherEmail(nom, email, scoreEmail)
+
+    } catch(erreur) {
+        afficherMessageErreur(erreur.message)
+    }
 }
 
 function lancerJeux() {
@@ -85,18 +114,9 @@ function lancerJeux() {
     form.addEventListener("submit", (event) => {
         event.preventDefault()
         //preventDefault() = pas de rechargement auto de la page apres avoir soumis le formulaire
-        let baliseNom = document.getElementById("nom")
-        let nom = baliseNom.value
-        
-        let baliseEmail = document.getElementById("email")
-        let email = baliseEmail.value
+        let scoreEmail = `${score} / ${i}`
 
-        if(validerEmail(email) && validerNom(nom)){
-            let scoreEmail = `${score} / ${i}`
-            afficherEmail(nom, email, scoreEmail)
-        }else{
-            console.log("error")
-        }
+        gererFormulaire(scoreEmail)
     })
 
     afficherResultat(score, i)
